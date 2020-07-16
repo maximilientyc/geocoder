@@ -19,7 +19,7 @@ module Geocoder
       private
 
       def results(query)
-        super(query, 'results')
+        super(query, 'candidates')
       end
 
       def base_query_url(query)
