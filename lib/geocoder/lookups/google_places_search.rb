@@ -30,9 +30,16 @@ module Geocoder
         {
           input: query.text,
           inputtype: 'textquery',
-          fields: default_fields,
+          fields: fields(query),
           language: query.language || configuration.language
         }
+      end
+
+      def fields(query)
+        query_fields = query.options[:fields]
+        return format_fields(query_fields) if query_fields
+
+        default_fields
       end
 
       def default_fields
@@ -41,7 +48,11 @@ module Geocoder
           photos place_id plus_code types]
         contact = %w[opening_hours]
         atmosphere = %W[price_level rating user_ratings_total]
-        (legacy + basic + contact + atmosphere).join(',')
+        format_fields(legacy, basic, contact, atmosphere)
+      end
+
+      def format_fields(*fields)
+        fields.flatten.join(',')
       end
     end
   end

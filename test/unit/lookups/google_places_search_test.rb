@@ -56,6 +56,13 @@ class GooglePlacesSearchTest < GeocoderTestCase
     assert_match(/fields=#{fields.join('%2C')}/, url)
   end
 
+  def test_google_places_search_query_url_contains_specific_fields_when_given
+    fields = %w[formatted_address place_id]
+    url = lookup.query_url(Geocoder::Query.new("some-address", fields: fields))
+    
+    assert_match(/fields=#{fields.join('%2C')}/, url)
+  end
+
   def test_google_places_search_query_url_uses_find_place_service
     url = lookup.query_url(Geocoder::Query.new("some-address"))
     assert_match(%r{//maps.googleapis.com/maps/api/place/findplacefromtext/}, url)
