@@ -32,7 +32,7 @@ module Geocoder
       end
 
       def default_fields
-        legacy_fields = %[id reference]
+        legacy_fields = %w[id reference]
         basic = %w[business_status formatted_address geometry icon name 
           photos place_id plus_code types]
         contact = %w[opening_hours]
