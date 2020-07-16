@@ -19,13 +19,14 @@ module Geocoder
       private
 
       def base_query_url(query)
-        "#{protocol}://maps.googleapis.com/maps/api/place/textsearch/json?"
+        "#{protocol}://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
       end
 
       def query_url_google_params(query)
         {
           query: query.text,
-          language: query.language || configuration.language
+          language: query.language || configuration.language,
+          fields: 'business_status,formatted_address,geometry,icon,name,photos,place_id,plus_code,types,opening_hours,price_level,rating,user_ratings_total'
         }
       end
     end
