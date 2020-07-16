@@ -18,6 +18,10 @@ module Geocoder
 
       private
 
+      def results(query)
+        super(query, 'results')
+      end
+
       def base_query_url(query)
         "#{protocol}://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
       end
