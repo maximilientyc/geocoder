@@ -24,9 +24,10 @@ module Geocoder
 
       def query_url_google_params(query)
         {
-          query: query.text,
-          language: query.language || configuration.language,
-          fields: default_fields
+          input: query.text,
+          inputtype: 'textquery',
+          fields: default_fields,
+          language: query.language || configuration.language
         }
       end
 

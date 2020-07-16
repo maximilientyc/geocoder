@@ -33,6 +33,16 @@ class GooglePlacesSearchTest < GeocoderTestCase
     assert_match(/language=de/, url)
   end
 
+  def test_google_places_search_query_url_contains_input
+    url = lookup.query_url(Geocoder::Query.new("some-address"))
+    assert_match(/input=some-address/, url)
+  end
+
+  def test_google_places_search_query_url_contains_input_typer
+    url = lookup.query_url(Geocoder::Query.new("some-address"))
+    assert_match(/inputtype=textquery/, url)
+  end
+
   def test_google_places_search_query_url_always_uses_https
     url = lookup.query_url(Geocoder::Query.new("some-address"))
     assert_match(%r{^https://}, url)
