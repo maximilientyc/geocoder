@@ -37,7 +37,7 @@ module Geocoder
           photos place_id plus_code types]
         contact = %w[opening_hours]
         atmosphere = %W[price_level rating user_ratings_total]
-        (basic + contact + atmosphere).join(',')
+        (legacy + basic + contact + atmosphere).join(',')
       end
     end
   end
