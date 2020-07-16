@@ -26,8 +26,16 @@ module Geocoder
         {
           query: query.text,
           language: query.language || configuration.language,
-          fields: 'business_status,formatted_address,geometry,icon,name,photos,place_id,plus_code,types,opening_hours,price_level,rating,user_ratings_total'
+          fields: default_fields
         }
+      end
+
+      def default_fields
+        basic = %w[business_status formatted_address geometry icon name 
+          photos place_id plus_code types]
+        contact = %w[opening_hours]
+        atmosphere = %W[price_level rating user_ratings_total]
+        (basic + contact + atmosphere).join(',')
       end
     end
   end
