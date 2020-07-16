@@ -32,11 +32,12 @@ module Geocoder
       end
 
       def default_fields
+        legacy_fields = %[id reference]
         basic = %w[business_status formatted_address geometry icon name 
           photos place_id plus_code types]
         contact = %w[opening_hours]
         atmosphere = %W[price_level rating user_ratings_total]
-        (basic + contact + atmosphere).join(',')
+        (legacy_fields + basic + contact + atmosphere).join(',')
       end
     end
   end
