@@ -22,8 +22,12 @@ module Geocoder
         "#{protocol}://maps.googleapis.com/maps/api/place/details/json?"
       end
 
+      def result_root_attr
+        'result'
+      end
+
       def results(query)
-        result = super(query, 'result')
+        result = super(query)
         return [result] unless result.is_a? Array
 
         result

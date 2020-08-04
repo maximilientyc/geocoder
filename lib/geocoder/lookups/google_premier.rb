@@ -21,8 +21,8 @@ module Geocoder::Lookup
 
     private # ---------------------------------------------------------------
 
-    def results(query)
-      super(query, 'results')
+    def result_root_attr
+      'results'
     end
 
     def cache_key(query)
